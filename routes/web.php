@@ -23,16 +23,12 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/tasks', function () {
-    //$tasks = Task::all();
     return view('tasks', [
         'tasks' => Task::all()
     ]);
 });
 
 Route::get('/task/{task}', function ($slug) {
-    // Find a task by its slug and pass it to a view called "task"
-    //$task = Task::find($slug);
-
     return view('task', [
         'task' => Task::find($slug)
     ]);

@@ -18,7 +18,10 @@
         <main>
             <?php foreach ($tasks as $task) : ?>
                 <article>
-                    <?= $task; ?>
+                    <h1><a href="task/<?= $task->slug ?>"><?= $task->title ?></a></h1>
+                    <div>
+                        <?= $task->excerpt ?>
+                    </div>
                 </article>
             <?php endforeach; ?>
             {{-- <article>

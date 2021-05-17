@@ -17,7 +17,10 @@
         </header>
         <main>
             <article>
-                <?= $task ?>
+                <h1><?= $task->title ?></h1>
+                <div>
+                    <?= $task->body ?>
+                </div>
             </article>
             <a href="../tasks">Go Back</a>
             <!--{{ $content ?? '' }}-->
