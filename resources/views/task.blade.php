@@ -7,7 +7,7 @@
         <title>ToDo application</title>
 
         <!-- Fonts & Styles -->
-        <link rel="stylesheet" href="test.css">
+        <link rel="stylesheet" href="../test.css">
         <!-- here you can add a JS script, explanation in laracastvideo "include css and JS"-->
     </head>
     <body>
@@ -16,7 +16,10 @@
             <p><a href="tasks">Tasks</a></p>
         </header>
         <main>
-        This is the welcoming page to the todo application
+            <article>
+                <?= $task ?>
+            </article>
+            <a href="tasks">Go Back</a>
             <!--{{ $content ?? '' }}-->
         </main>
         <footer>
