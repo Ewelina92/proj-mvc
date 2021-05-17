@@ -16,7 +16,12 @@
             <p><a href="tasks">Tasks</a></p>
         </header>
         <main>
-            <article>
+            <?php foreach ($tasks as $task) : ?>
+                <article>
+                    <?= $task; ?>
+                </article>
+            <?php endforeach; ?>
+            {{-- <article>
                 <h1><a href="task/first-task">My first task</a></h1>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
@@ -25,9 +30,9 @@
                     velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
-            </article>
+            </article> --}}
 
-            <article>
+            {{-- <article>
                 <h1><a href="task/second-task">My second task</a></h1>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
@@ -47,7 +52,7 @@
                     velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
-            </article>
+            </article> --}}
             <!--{{ $content ?? '' }}-->
         </main>
         <footer>

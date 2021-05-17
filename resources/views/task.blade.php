@@ -12,14 +12,14 @@
     </head>
     <body>
         <header>
-            <p><a href="welcome">Homepage</a></p>
-            <p><a href="tasks">Tasks</a></p>
+            <p><a href="../welcome">Homepage</a></p>
+            <p><a href="../tasks">Tasks</a></p>
         </header>
         <main>
             <article>
                 <?= $task ?>
             </article>
-            <a href="tasks">Go Back</a>
+            <a href="../tasks">Go Back</a>
             <!--{{ $content ?? '' }}-->
         </main>
         <footer>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,21 +23,18 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/tasks', function () {
-    return view('tasks');
+    //$tasks = Task::all();
+    return view('tasks', [
+        'tasks' => Task::all()
+    ]);
 });
 
 Route::get('/task/{task}', function ($slug) {
-    $path = __DIR__ . "/../resources/tasks/{$slug}.html";
-
-    if (!file_exists($path)) {
-        return redirect('/tasks');
-        //ddd('file does not exist');
-    }
-
-    $task = file_get_contents($path);
+    // Find a task by its slug and pass it to a view called "task"
+    //$task = Task::find($slug);
 
     return view('task', [
-        'task' => $task
+        'task' => Task::find($slug)
     ]);
 })->where('task', '[A-z0-9_\-]+');
 
