@@ -57,6 +57,7 @@ class Task
     public static function find($slug)
     {
         return static::all()->firstWhere('slug', $slug);
+
         // base_path();
         // $path = resource_path("tasks/{$slug}.html");
 
@@ -70,6 +71,17 @@ class Task
         // });
 
         // $task = file_get_contents($path);
+    }
+
+    public static function findOrFail($slug)
+    {
+        $task = static::find($slug);
+
+        if (! $task) {
+            throw new ModelNotFoundException();
+        }
+
+        return $task;
     }
 
 

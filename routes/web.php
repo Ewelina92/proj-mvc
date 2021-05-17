@@ -19,18 +19,22 @@ Route::get('/', function () { // needed to work locally + student-server
 });
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('welcome', [
+        'titlePart' => '| Home'
+    ]);
 });
 
 Route::get('/tasks', function () {
     return view('tasks', [
+        'titlePart' => '| All tasks',
         'tasks' => Task::all()
     ]);
 });
 
 Route::get('/task/{task}', function ($slug) {
     return view('task', [
-        'task' => Task::find($slug)
+        'titlePart' => '| Current task',
+        'task' => Task::findOrFail($slug)
     ]);
-})->where('task', '[A-z0-9_\-]+');
+});
 
