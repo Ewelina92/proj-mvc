@@ -11,12 +11,12 @@
         @foreach ($tasks as $task)
             <article>
                 <h2>
-                    <a href="task/{{ $task->slug }}">
+                    <a href="task/{{ $task->id }}">
                         {{ $task->title ?? '' }}
                     </a>
                 </h2>
                 <div>
-                    {{ $task->excerpt ?? '' }}
+                    Created at: {{ $task->created_at ?? '' }}
                 </div>
             </article>
         @endforeach

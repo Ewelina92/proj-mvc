@@ -31,10 +31,10 @@ Route::get('/tasks', function () {
     ]);
 });
 
-Route::get('/task/{task}', function ($slug) {
+Route::get('/task/{task}', function ($id) {
     return view('task', [
         'titlePart' => '| Current task',
-        'task' => Task::findOrFail($slug)
+        'task' => Task::findOrFail($id)
     ]);
 });
 
