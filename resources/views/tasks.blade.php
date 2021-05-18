@@ -16,7 +16,7 @@
                     </a>
                 </h2>
                 <div>
-                    Created at: {{ $task->created_at ?? '' }}
+                    <p>Created at: {{ $task->created_at ?? '' }}</p>
                 </div>
             </article>
         @endforeach

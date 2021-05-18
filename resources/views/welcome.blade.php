@@ -7,7 +7,11 @@
     
     <x-slot name="content">
 
-        This is the welcoming page to the todo application.
+        Welcome to the ToDo application.
+        To get started log in by using one of the following two:
+
+        <button>Log in</button>
+        <button style="background-color: salmon;">Register NOT AVAILABLE</button>
 
     </x-slot>
 </x-layout>

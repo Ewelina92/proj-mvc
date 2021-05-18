@@ -27,14 +27,16 @@ Route::get('/welcome', function () {
 Route::get('/tasks', function () {
     return view('tasks', [
         'titlePart' => '| All tasks',
-        'tasks' => Task::all()
+        'tasks' => Task::all()->sortByDesc('created_at')
     ]);
 });
 
-Route::get('/task/{task}', function ($id) {
+// id is the default to look for, it has to be the same name
+//{task::uniquecolumnname} gives Task::where('uniquecolumnname', $task)->firstOrFail();
+Route::get('/task/{task}', function (Task $task) { // instead of $id ROUTE MODEL BINDING
     return view('task', [
         'titlePart' => '| Current task',
-        'task' => Task::findOrFail($id)
+        'task' => $task //Task::findOrFail($id)
     ]);
 });
 

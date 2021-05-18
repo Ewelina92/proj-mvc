@@ -10,7 +10,7 @@
         <article>
             <h1>{{ $task->title ?? '' }}</h1>
             <div>
-                {!! $task->body ?? '' !!}
+                <p>{{ $task->body ?? '' }}</p>
             </div>
         </article>
 
