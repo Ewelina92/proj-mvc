@@ -1,9 +1,4 @@
-<x-layout>
-    <x-slot name="titlePart"> 
-
-        {{ $titlePart ?? '' }}
-        
-    </x-slot> 
+<x-layout :user="$user" :titlePart='$titlePart'>
 
     <x-slot name="content">
     

@@ -23,8 +23,9 @@ class TaskFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'body' => $this->faker->paragraph,
-            'user_id' => $this->faker->numberBetween(1, 2),
+            // 'body' => $this->faker->paragraph,
+            'body' => $this->faker->paragraphs($this->faker->numberBetween(1, 3), true),
+            'user_id' => $this->faker->numberBetween(1, 3),
         ];
     }
 }

@@ -1,7 +1,10 @@
 <?php
 
 use App\Models\Task;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\{
+    TaskController,
+    UserController
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,30 +22,27 @@ Route::get('/', function () { // needed to work locally + student-server
     return redirect('/welcome');
 });
 
-// Route::get('/welcome', function () {
-//     return view('welcome', [
-//         'titlePart' => '| Home'
-//     ]);
-// });
+Route::get('/welcome', [UserController::class, 'index']);
 
-Route::get('/welcome', [TaskController::class, 'index']);
+// login, logout, register
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout']);
+Route::get('/register', [UserController::class, 'registerForm']);
+Route::post('/register', [UserController::class, 'register']);
+
+// show task collections
 Route::get('/tasks', [TaskController::class, 'showTasks']);
-Route::get('/task/{task}', [TaskController::class, 'showOneTask']);
 Route::get('/finished-tasks', [TaskController::class, 'showFinishedTasks']);
 
-// id is the default to look for, it has to be the same name
-//{task::uniquecolumnname} gives Task::where('uniquecolumnname', $task)->firstOrFail();
-// Route::get('/task/{task}', function (Task $task) { // instead of $id ROUTE MODEL BINDING
-//     return view('task', [
-//         'titlePart' => '| Current task',
-//         'task' => $task //Task::findOrFail($id)
-//     ]);
-// });
+// show single task
+Route::get('/task/{task}', [TaskController::class, 'showOneTask']);
 
-// Route::get('/finished-tasks', function () {
-//     return view('finished-tasks', [
-//         'titlePart' => '| Finished tasks',
-//         'tasks' => Task::all()->sortByDesc('created_at')
-//     ]);
-// });
+// finish, update, delete a single task
+Route::get('/task/{task}/done', [TaskController::class, 'taskDone']);
+Route::get('/task/{task}/delete', [TaskController::class, 'deleteTask']);
+Route::get('/task/{task}/update', [TaskController::class, 'updateTaskForm']);
+Route::post('/task/{task}/update', [TaskController::class, 'updateTask']);
 
+// add a new task
+Route::get('/add-task', [TaskController::class, 'addTaskForm']);
+Route::post('/add-task', [TaskController::class, 'addTask']);

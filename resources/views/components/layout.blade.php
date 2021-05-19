@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ToDo {{ $titlePart }}</title>
+        <title>ToDo {{ $titlePart ?? '' }}</title>
 
         <!-- Fonts & Styles -->
         <link rel="stylesheet" href="{{ asset('test.css') }}">
@@ -12,11 +12,15 @@
     <body>
         <header>
         <h1>ToDo</h1>
+
         <nav>
             <a href="{{ url('/welcome') }}">Home</a>
+        @if ( $user ?? '' )
             <a href="{{url('/tasks') }}">To Do List</a>
             <a href="{{url('/finished-tasks') }}">Finished Tasks</a>
+        @endif
         </nav>
+
         </header>
         <main>
             {{ $content }}

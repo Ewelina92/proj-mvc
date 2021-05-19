@@ -1,23 +1,28 @@
-<x-layout>
-    <x-slot name="titlePart"> 
+<x-layout :user="$user" :titlePart='$titlePart'>
 
-        {{ $titlePart ?? '' }}
-        
-    </x-slot> 
     
     <x-slot name="content">
 
-        Welcome to the ToDo application.
-        To get started log in by using one of the following two:
+        Welcome {{ $user->username ?? '' }} to the ToDo application.
 
-        <form method="GET" action="#">
-            <label for="email">Log in using your email</label>
-            <input type="email" name="email" placeholder="email@example.com">
-            <input type="password" name="password" placeholder="password">
-            <input type="submit" value="Log in">
+        @if (!$user)
+        <form method=POST action="{{url('/login') }}">
+        @csrf <!-- prevent 419 page expired -->
+        <fieldset>
+            <p>Log in</p>
+            <label for="email">Email: </label>
+                <input type="email" name="email" id="email" placeholder="email@example.com" required>
+            <label for="password">Password: </label>
+                <input type="password" name="password" id="password" placeholder="password" required>
+                <br><br>
+                <input type="submit" value="Log in">
+        </fieldset>
         </form>
-        
-        <button style="background-color: salmon;">Register NOT AVAILABLE</button>
+
+            <a href="{{url('/register') }}">Register</a>
+        @else
+            <a href="{{url('/logout') }}">Logout</a>
+        @endif
 
     </x-slot>
 </x-layout>

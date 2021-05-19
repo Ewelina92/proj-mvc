@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Task::truncate();
 
-        User::factory(2)->create();
-        Task::factory(10)->create();
+        User::factory(3)->create();
+        Task::factory(20)->create();
     }
 }

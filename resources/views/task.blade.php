@@ -1,9 +1,4 @@
-<x-layout>
-    <x-slot name="titlePart"> 
-
-        {{ $titlePart ?? '' }}
-        
-    </x-slot> 
+<x-layout :user="$user" :titlePart='$titlePart'>
     
     <x-slot name="content">
 
@@ -13,9 +8,9 @@
                 <p>{{ $task->body ?? '' }}</p>
             </div>
             <div class="task-choices">
-                <a href=#>Update</a> |
-                <a href=#>Mark as done</a> |
-                <a href=#>Delete</a> |
+                <a href="{{url("/task/$task->id/update") }}">Update</a> |
+                <a href="{{ url("/task/$task->id/done") }}">Mark as done</a> |
+                <a href="{{ url("/task/$task->id/delete") }}">Delete</a> |
                 <a href="{{url('/tasks') }}">Go Back</a>
             </div>
         </article>

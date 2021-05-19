@@ -19,4 +19,17 @@ class Task extends Model
         'body',
         'user_id',
     ];
+
+    public function done() {
+        $this->finished_at = now();
+        $this->save();
+    }
+
+    public function updateTask($title, $body) {
+        $this->title = $title;
+        $this->body = $body;
+        $this->save();
+    }
+
+    
 }

@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+
 
 class User extends Authenticatable
 {
@@ -27,7 +29,22 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-    ];
+    // protected $hidden = [
+    //     'password',
+    // ];
+
+    public function checkUser($email, $pass) {
+        $user = User::all()->filter()
+            ->where('email', "=", $email)->first();
+  
+        if ($user != null && Hash::check($pass, $user->password)) {
+            return $user;
+        }
+
+        return null;
+    }
+
+    public function hello() {
+        return "hello";
+    }
 }
