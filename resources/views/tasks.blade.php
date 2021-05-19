@@ -3,8 +3,8 @@
 
     <x-slot name="content">
     
-        <h1>To Do List</h1>
-        <a href="{{url('/add-task') }}">Add a new task</a>
+        <h1 class="center">To Do List</h1>
+        <p class="add-task-link center" ><a href="{{url('/add-task') }}">Add a new task</a></p>
         @if ($tasks->count())
         @foreach ($tasks as $task)
             <article class="task-list">
@@ -27,7 +27,8 @@
             </article>
         @endforeach
         @else
-            <p>There are no tasks to do yet.</p>
+            <p>You have no active tasks right now. When you add task
+            using the button above, you will see them here.</p>
         @endif
 
     </x-slot>

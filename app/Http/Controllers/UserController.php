@@ -25,10 +25,7 @@ class UserController extends Controller
         $request->session()->put('user', $user);
 
         if ($user) {
-            return view('welcome', [
-                'titlePart' => '| Home',
-                'user' => $user
-            ]); 
+            return redirect('/tasks');
         }
 
         return redirect('/welcome');
@@ -50,7 +47,7 @@ class UserController extends Controller
         $user = User::where('email', '=', $email)->first();
 
         if($user) {
-            return abort(409, 'Email already taken.');
+            return abort(403, 'Email already taken.');
         }
 
         $newUser = new User;
@@ -62,7 +59,7 @@ class UserController extends Controller
         // auto log in
         $request->session()->put('user', $newUser);
         
-        return redirect('/welcome');
+        return redirect('/tasks');
     }
 
     public function logout(Request $request)

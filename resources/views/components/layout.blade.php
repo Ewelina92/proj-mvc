@@ -11,13 +11,16 @@
     </head>
     <body>
         <header>
-        <h1>ToDo</h1>
+        <h1>ToDo Application</h1>
 
         <nav>
-            <a href="{{ url('/welcome') }}">Home</a>
         @if ( $user ?? '' )
             <a href="{{url('/tasks') }}">To Do List</a>
             <a href="{{url('/finished-tasks') }}">Finished Tasks</a>
+            <a href="{{url('/logout') }}">Logout</a>
+        @else
+            <a href="{{ url('/welcome') }}">Login</a>
+            <a href="{{ url('/register') }}">Register</a>
         @endif
         </nav>
 
@@ -26,7 +29,7 @@
             {{ $content }}
         </main>
         <footer>
-            <p>&copy; Ewelina Jankowska, endproject for MVC spring 2021.</p>
+            <p>&copy; Ewelina Jankowska, ending project for MVC spring 2021.</p>
         </footer>
     </body>
 </html>

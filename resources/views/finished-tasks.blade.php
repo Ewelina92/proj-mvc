@@ -2,7 +2,8 @@
 
     <x-slot name="content">
     
-        <h1>Finished tasks</h1>
+        <h1 class="center">Finished tasks</h1>
+
         @if ($tasks->count())
         <article class="finished">
         @foreach ($tasks as $task)
@@ -18,7 +19,9 @@
         @endforeach
          </article>
         @else
-            <p>You haven't finished any tasks yet.</p>
+            <p>You have no finished tasks yet. When you finish a task,
+            you will see it here afterwards together with all other
+            finished tasks.</p>
         @endif
 
     </x-slot>
