@@ -6,22 +6,19 @@ html {
 body {
     background-color: #fff;
     color: #333;
-    width: 70%;
-    margin: auto;
     font-family: 'Roboto', sans-serif;
 }
 
-header {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    border-bottom: 2px solid #333;
-    margin-bottom: 1rem;
+main {
+    width: 70%;
+    margin: auto;
+    min-height: 400px;
 }
 
 footer {
-    border-top: 2px solid #333;
+    border-top: 2px solid rgb(237,237,237, 0.8);
     margin-top: 3rem;
+    text-align: center;
 }
 
 p {
@@ -30,6 +27,168 @@ p {
 
 article + article {
     margin-top: 3rem;
-    padding-top: 3rem;
     border-top: 1px solid #c5c5c5;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/*
+ * Styling for header
+ */
+
+header {
+    background: white;
+    /* border-bottom: 1px solid gray; */
+    box-shadow: 0 0 5px rgba(22, 22, 22, 0.1);
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    padding: 0.2em;
+    margin: 0.1em;
+    font-size: 3rem;
+    text-align:center;
+}
+
+header nav {
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header nav a {
+    flex-grow: 1;
+    text-align: center;
+    padding: 1em;
+    padding-top: 0;
+    position: relative;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right:0;
+    height: 2px;
+    transform: scaleX(0);
+    background: #333;
+    transition: 0.7s transform cubic-bezier(0.06, 0.9, 0.28, 1);
+}
+
+header nav a:hover::after{
+    transform: scaleX(0.3)
+}
+
+/*
+ * Styling for task list
+ */
+
+.task-list {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 3fr 1fr;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    border: 1px solid rgb(237,237,237, 0.5);
+    box-shadow: 0 0 5px rgb(22,22,22, 0.1);
+}
+
+.finished {
+    background-color: #d6e5d6;
+    border: 1px solid rgb(237,237,237, 0.5);
+    box-shadow: 0 0 5px rgb(22,22,22, 0.1);
+    border-radius: 30px;
+    padding: 1em;
+}
+
+.finished h3 {
+    margin-bottom: 0.1em;
+}
+
+.finished ul {
+    list-style-type: none;
+}
+
+.small-info {
+    font-size: smaller;
+    color: #777;
+}
+
+.finished-task {
+    background-color: rgba(255,255,255, 0.4);
+    border-radius: 20px;
+    padding-left: 0;
+    padding: 0.3em 0.5em 1em 1em;
+}
+
+.task-short {
+    display: grid;
+    grid-template-rows: 1fr;
+    place-items: center;
+}
+
+.task-short div p {
+    color: #888;
+}
+
+.task-list-choices {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    place-items: center;
+    border-left: 1px solid rgb(237,237,237);
+}
+
+.task-list-choices a {
+    padding: 1em;
+    text-align: center;
+}
+
+.task-list-choices a:hover,
+.task-short a:hover {
+    text-decoration: underline;
+}
+
+/*
+ * Styling for one task
+ */
+
+ .one-task {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    border: 1px solid rgb(237,237,237, 0.5);
+    box-shadow: 0 0 5px rgb(22,22,22, 0.1);
+    min-height: 200px;
+}
+
+.one-task h1 {
+    text-align: center;
+}
+
+.one-task .task-choices {
+    text-align: center;
+    align-self: flex-end;
+    padding-bottom: 1em;
+}
+
+.task-choices a {
+    padding: 0.5em;
+}
+
+.task-choices a:hover {
+    text-decoration: underline;
+}
+
+.task-info {
+    grid-row: span 2 / span 2;
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    padding: 1em;
 }

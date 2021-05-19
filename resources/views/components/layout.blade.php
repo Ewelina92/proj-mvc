@@ -11,8 +11,12 @@
     </head>
     <body>
         <header>
-            <p><a href="{{ url('/welcome') }}">Homepage</a></p>
-            <p><a href="{{url('/tasks') }}">Tasks</a></p>
+        <h1>ToDo</h1>
+        <nav>
+            <a href="{{ url('/welcome') }}">Home</a>
+            <a href="{{url('/tasks') }}">To Do List</a>
+            <a href="{{url('/finished-tasks') }}">Finished Tasks</a>
+        </nav>
         </header>
         <main>
             {{ $content }}
