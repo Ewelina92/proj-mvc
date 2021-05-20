@@ -1,4 +1,6 @@
+<p align="center">
 [![Build Status](https://travis-ci.org/Ewelina92/proj-mvc.svg?branch=main)](https://travis-ci.org/Ewelina92/proj-mvc)
+</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>

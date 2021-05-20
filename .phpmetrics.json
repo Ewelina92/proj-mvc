@@ -1,0 +1,19 @@
+{
+    "includes": [
+        "app"
+    ],
+    "exclude": [
+      "test[s]?",
+      "app/Console",
+      "app/Http/Middleware",
+      "app/Providers"
+    ],
+    "report": {
+        "html": "build/phpmetrics-html/"
+    },
+    "plugins": {
+        "git": {
+            "binary": "git"
+        }
+    }
+}
