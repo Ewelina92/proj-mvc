@@ -9,8 +9,8 @@ class TaskController extends Controller
 {
     public function showTasks(Request $request)
     {
-        if(!$request->session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!$request->session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
         $user = $request->session()->get('user');
@@ -27,12 +27,12 @@ class TaskController extends Controller
 
     public function showOneTask(Task $task)
     {
-        if(!session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
-        if($task->user_id != session()->get('user')->id) {
-            return abort(403, 'You are not authorized to see this task.');
+        if ($task->user_id != session()->get('user')->id) {
+            abort(403, 'You are not authorized to see this task.');
         }
 
         return view('task', [
@@ -44,8 +44,8 @@ class TaskController extends Controller
 
     public function showFinishedTasks(Request $request)
     {
-        if(!$request->session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!$request->session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
         $user = $request->session()->get('user');
@@ -61,12 +61,13 @@ class TaskController extends Controller
 
     public function addTask(Request $request)
     {
-        if(!$request->session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!$request->session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
         $user = $request->session()->get('user');
 
+        /** @phpstan-ignore-next-line */
         Task::create([
             'title' => $request->input("title"),
             'body' => $request->input("body"),
@@ -78,8 +79,8 @@ class TaskController extends Controller
 
     public function addTaskForm(Request $request)
     {
-        if(!$request->session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!$request->session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
         $user = $request->session()->get('user');
@@ -92,12 +93,12 @@ class TaskController extends Controller
 
     public function updateTaskForm(Task $task, Request $request)
     {
-        if(!session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
-        if($task->user_id != session()->get('user')->id) {
-            return abort(403, 'You are not authorized to see this task.');
+        if ($task->user_id != session()->get('user')->id) {
+            abort(403, 'You are not authorized to see this task.');
         }
 
         return view('update-task', [
@@ -109,47 +110,49 @@ class TaskController extends Controller
 
     public function updateTask(Task $task, Request $request)
     {
-        if(!session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
-        if($task->user_id != session()->get('user')->id) {
-            return abort(403, 'You are not authorized to see this task.');
+        if ($task->user_id != session()->get('user')->id) {
+            abort(403, 'You are not authorized to see this task.');
         }
 
-        $task->updateTask($request->input('title'),
-            $request->input('body'));
+        $task->updateTask(
+            $request->input('title'),
+            $request->input('body')
+        );
 
         return redirect('/tasks');
     }
 
     public function taskDone(Task $task)
     {
-        if(!session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
-        if($task->user_id != session()->get('user')->id) {
-            return abort(403, 'You are not authorized to see this task.');
+        if ($task->user_id != session()->get('user')->id) {
+            abort(403, 'You are not authorized to see this task.');
         }
 
         $task->done();
-        
+
         return redirect("/finished-tasks");
     }
 
     public function deleteTask(Task $task)
     {
-        if(!session()->has('user')) {
-            return abort(403, 'You are not logged in.');
+        if (!session()->has('user')) {
+            abort(403, 'You are not logged in.');
         }
 
-        if($task->user_id != session()->get('user')->id) {
-            return abort(403, 'You are not authorized to see this task.');
+        if ($task->user_id != session()->get('user')->id) {
+            abort(403, 'You are not authorized to see this task.');
         }
 
         $task->delete();
-        
+
         return redirect("/tasks");
     }
 }

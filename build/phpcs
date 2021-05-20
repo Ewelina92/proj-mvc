@@ -1,0 +1,12 @@
+
+FILE: /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Models/Task.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 16 | ERROR | [x] Whitespace found at end of line
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+Time: 1.72 secs; Memory: 8MB
+

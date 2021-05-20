@@ -12,7 +12,7 @@ class UserController extends Controller
         return view('welcome', [
             'titlePart' => '| Home',
             'user' => $request->session()->get('user', null)
-        ]); 
+        ]);
     }
 
     public function login(Request $request)
@@ -20,7 +20,7 @@ class UserController extends Controller
         $email = $request->input("email");
         $password = $request->input("password");
 
-        $user = new User;
+        $user = new User();
         $user = $user->checkUser($email, $password); // FIXA
         $request->session()->put('user', $user);
 
@@ -35,7 +35,7 @@ class UserController extends Controller
     {
         return view('register', [
             'titlePart' => '| Register',
-        ]); 
+        ]);
     }
 
     public function register(Request $request)
@@ -44,13 +44,14 @@ class UserController extends Controller
         $password = $request->input("password");
         $username = $request->input("username");
 
+        /** @phpstan-ignore-next-line */
         $user = User::where('email', '=', $email)->first();
 
-        if($user) {
-            return abort(403, 'Email already taken.');
+        if ($user) {
+            abort(403, 'Email already taken.'); // return?
         }
 
-        $newUser = new User;
+        $newUser = new User();
         $newUser->email = $email;
         $newUser->password = bcrypt($password);
         $newUser->username = $username;
@@ -58,14 +59,14 @@ class UserController extends Controller
 
         // auto log in
         $request->session()->put('user', $newUser);
-        
+
         return redirect('/tasks');
     }
 
     public function logout(Request $request)
     {
         $request->session()->forget('user');
-        
+
         return redirect('/welcome');
     }
 }

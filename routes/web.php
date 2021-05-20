@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { // needed to work locally + student-server
+// needed to work locally + student-server
+Route::get('/', function () {
     return redirect('/welcome');
 });
 

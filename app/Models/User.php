@@ -8,10 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
+
+    public $email;
+    public $password;
+    public $username;
 
     /**
      * The attributes that are mass assignable.
@@ -33,10 +37,11 @@ class User extends Authenticatable
     //     'password',
     // ];
 
-    public function checkUser($email, $pass) {
+    public function checkUser($email, $pass)
+    {
         $user = User::all()->filter()
             ->where('email', "=", $email)->first();
-  
+
         if ($user != null && Hash::check($pass, $user->password)) {
             return $user;
         }
@@ -44,7 +49,8 @@ class User extends Authenticatable
         return null;
     }
 
-    public function hello() {
+    public function hello()
+    {
         return "hello";
     }
 }

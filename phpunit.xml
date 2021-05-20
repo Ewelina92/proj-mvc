@@ -16,6 +16,17 @@
         <include>
             <directory suffix=".php">./app</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">./app/Http/Middleware</directory>
+            <directory suffix=".php">./app/Providers</directory>
+            <directory suffix=".php">./app/Exceptions</directory>
+            <directory suffix=".php">./app/Console</directory>
+            <file>./app/Http/Kernel.php</file>
+      </exclude>
+        <report>
+            <clover outputFile="build/coverage.clover"/>
+            <html outputDirectory="build/coverage" lowUpperBound="35" highLowerBound="70"/>
+        </report>
     </coverage>
     <php>
         <server name="APP_ENV" value="testing"/>
