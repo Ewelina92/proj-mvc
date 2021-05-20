@@ -9,11 +9,11 @@ class Task extends Model
 {
     use HasFactory; // Task::factory()
 
-    public $title;
-    public $body;
-    public $finished_at;
-    public $user_id;
-    
+    // public $title;
+    // public $body;
+    // public $finished_at;
+    // public $user_id;
+
      /**
      * The attributes that are mass assignable.
      *

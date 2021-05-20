@@ -13,9 +13,9 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
 
-    public $email;
-    public $password;
-    public $username;
+    // public $email;
+    // public $password;
+    // public $username;
 
     /**
      * The attributes that are mass assignable.
@@ -47,10 +47,5 @@ class User extends Authenticatable
         }
 
         return null;
-    }
-
-    public function hello()
-    {
-        return "hello";
     }
 }

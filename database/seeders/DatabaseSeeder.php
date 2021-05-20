@@ -18,7 +18,26 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Task::truncate();
 
-        User::factory(3)->create();
-        Task::factory(20)->create();
+        User::create([
+            'username' => 'Albus Dumbledore',
+            'email' => 'albus@hogwarts.com',
+            'password' => '$2y$10$UXIih9Y.jgs6fNplAas2IeW2g/QN3.9MCbtd3u33nJO4nbVRTnL4i', // test
+        ]);
+
+        User::create([
+            'username' => 'Severus Snape',
+            'email' => 'severus@hogwarts.com',
+            'password' => '$2y$10$UXIih9Y.jgs6fNplAas2IeW2g/QN3.9MCbtd3u33nJO4nbVRTnL4i', // test
+        ]);
+
+        //User::factory(2)->create();
+
+        Task::factory(3)->create([
+            'user_id' => 1
+        ]);
+
+        Task::factory(3)->create([
+            'user_id' => 2
+        ]);
     }
 }

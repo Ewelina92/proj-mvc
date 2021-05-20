@@ -2,8 +2,8 @@
 /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Http/Controllers/TaskController.php:86	Avoid unused local variables such as '$user'.
 /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Http/Controllers/TaskController.php:94	Avoid unused parameters such as '$request'.
 /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Http/Controllers/UserController.php:34	Avoid unused parameters such as '$request'.
-/Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Models/Task.php:8	The property $finished_at is not named in camelCase.
-/Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Models/Task.php:8	The property $user_id is not named in camelCase.
 /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Models/User.php:45	Avoid using static access to class '\Illuminate\Support\Facades\Hash' in method 'checkUser'.
 /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Providers/BroadcastServiceProvider.php:17	Avoid using static access to class '\Illuminate\Support\Facades\Broadcast' in method 'boot'.
 /Users/ewelina/dbwebb-kurser/mvc/me/proj/app/Providers/RouteServiceProvider.php:59	Avoid using static access to class '\Illuminate\Support\Facades\RateLimiter' in method 'configureRateLimiting'.
+/Users/ewelina/dbwebb-kurser/mvc/me/proj/tests/Feature/UserTest.php:43	Avoid unused local variables such as '$result2'.
+/Users/ewelina/dbwebb-kurser/mvc/me/proj/tests/Feature/UserTest.php:46	Avoid unused local variables such as '$result3'.

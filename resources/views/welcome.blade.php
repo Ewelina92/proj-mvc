@@ -5,7 +5,8 @@
         @if (!$user)
         <h1 class="center">Welcome to this ToDo application!</h1>
         <p>You can get started by logging in below by using one of the emails
-        WRITE@WRITE or WRITE@WRTIE with the password "test". Each user has a couple of
+        <strong>"albus@hogwarts.com"</strong> or <strong>"severus@hogwarts.com"</strong> 
+        with the password <strong>"test"</strong>. Each user has a couple of
         pending tasks for you to try and update, mark as finished (or delete )to try out
         the functionality of the page. You can also add new tasks.<br><br>
         If you prefer to start at with an empty account, you can register 
