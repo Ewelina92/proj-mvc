@@ -41,13 +41,11 @@ class UserTest extends TestCase
         $expected = "email@email.com";
 
         $result2 = $user->checkUser("faultyemail@email.com", "test");
-        $expected2 = null;
 
         $result3 = $user->checkUser("email@email.com", "wrongpassword");
-        $expected3 = null;
 
         $this->assertEquals($expected, $result->email);
-        $this->assertEquals($expected2, null);
-        $this->assertEquals($expected3, null);
+        $this->assertEquals($result2, null);
+        $this->assertEquals($result3, null);
     }
 }

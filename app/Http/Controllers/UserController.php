@@ -31,7 +31,7 @@ class UserController extends Controller
         return redirect('/welcome');
     }
 
-    public function registerForm(Request $request)
+    public function registerForm()
     {
         return view('register', [
             'titlePart' => '| Register',

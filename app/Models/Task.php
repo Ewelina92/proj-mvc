@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Task
+ *
+ * @property string $title
+ * @property string $body
+ * @property string $finished_at
+ * @property integer $user_id
+ */
 class Task extends Model
 {
     use HasFactory; // Task::factory()
-
-    // public $title;
-    // public $body;
-    // public $finished_at;
-    // public $user_id;
 
      /**
      * The attributes that are mass assignable.

@@ -14,8 +14,10 @@
     <exclude-pattern>vendor</exclude-pattern>
     <exclude-pattern>app/Console</exclude-pattern>
     <exclude-pattern>app/Exceptions</exclude-pattern>
+    <exclude-pattern>app/Providers</exclude-pattern>
     <exclude-pattern>database/migrations</exclude-pattern>
     <exclude-pattern>database/seeders/DatabaseSeeder</exclude-pattern>
+  
 
     <rule ref="rulesets/design.xml" />
     <rule ref="rulesets/cleancode.xml" />

@@ -59,6 +59,12 @@ class TaskController extends Controller
         ]);
     }
 
+    /**
+     * Add a new task.
+     *
+     * @var Request
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     */
     public function addTask(Request $request)
     {
         if (!$request->session()->has('user')) {
@@ -83,15 +89,13 @@ class TaskController extends Controller
             abort(403, 'You are not logged in.');
         }
 
-        $user = $request->session()->get('user');
-
         return view('new-task', [
             'titlePart' => '| Add a task',
             'user' => session()->get('user')
         ]);
     }
 
-    public function updateTaskForm(Task $task, Request $request)
+    public function updateTaskForm(Task $task)
     {
         if (!session()->has('user')) {
             abort(403, 'You are not logged in.');

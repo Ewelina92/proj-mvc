@@ -8,14 +8,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * App\Models\Task
+ *
+ * @property integer $id
+ * @property string $email
+ * @property string $password
+ * @property string $username
+ */
 class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
-
-    // public $email;
-    // public $password;
-    // public $username;
 
     /**
      * The attributes that are mass assignable.
@@ -32,11 +36,8 @@ class User extends Authenticatable
      * The attributes that should be hidden for arrays.
      *
      * @var array
+     * @SuppressWarnings(PHPMD.StaticAccess)
      */
-    // protected $hidden = [
-    //     'password',
-    // ];
-
     public function checkUser($email, $pass)
     {
         $user = User::all()->filter()
