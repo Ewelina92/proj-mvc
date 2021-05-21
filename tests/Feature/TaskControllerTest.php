@@ -147,13 +147,11 @@ class TaskControllerTest extends TestCase
 
     public function testAddTask()
     {
-        $response = $this->post('/add-task', [
-            'title' => 'Lesson 5',
-            'body' => "Quidditch with Madame Hooch"]);
-
-        $response->assertStatus(302) // redirect
-            ->assertRedirect('/tasks');
-        $this->followRedirects($response)
+        $this->followingRedirects() // redirect
+            ->post('/add-task', [
+                'title' => 'Lesson 5',
+                'body' => "Quidditch with Madame Hooch"])
+            ->assertStatus(200)
             ->assertSee("Add a new task")
             ->assertSee("Lesson 5");
     }
@@ -190,13 +188,11 @@ class TaskControllerTest extends TestCase
         $task = Task::first();
         $taskId = $task->id;
 
-        $response = $this->post('/task' . '/' . $taskId . '/update', [
-            'title' => 'Lesson 1 Updated',
-            'body' => $task->body]);
-
-        $response->assertStatus(302) // redirect
-            ->assertRedirect('/tasks');
-        $this->followRedirects($response)
+        $this->followingRedirects() // redirect
+            ->post('/task' . '/' . $taskId . '/update', [
+                'title' => 'Lesson 1 Updated',
+                'body' => $task->body])
+            ->assertStatus(200)
             ->assertSee("Lesson 1 Updated");
     }
 
@@ -213,11 +209,10 @@ class TaskControllerTest extends TestCase
         $task = Task::first();
         $taskId = $task->id;
 
-        $response = $this->get('/task' . '/' . $taskId . '/done');
-
-        $response->assertStatus(302) // redirect
-            ->assertRedirect('/finished-tasks');
-        $this->followRedirects($response)
+        $this->followingRedirects() // redirect
+            ->get('/task' . '/' . $taskId . '/done')
+            ->assertStatus(200)
+            ->assertSee("Finished tasks")
             ->assertSee("Lesson 1");
     }
 
@@ -234,12 +229,9 @@ class TaskControllerTest extends TestCase
         $task = Task::first();
         $taskId = $task->id;
 
-        $response = $this->get('/task' . '/' . $taskId . '/delete');
-
-        $response->assertStatus(302) // redirect
-            ->assertRedirect('/tasks');
-
-        $this->followRedirects($response)
+        $this->followingRedirects() // redirect
+            ->get('/task' . '/' . $taskId . '/delete')
+            ->assertStatus(200)
             ->assertDontSee("Lesson 1");
 
         $this->assertDatabaseCount('tasks', 2);
