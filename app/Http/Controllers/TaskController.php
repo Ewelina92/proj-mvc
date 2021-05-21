@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    private function checkIfLoggedIn() {
-        if (!$request->session()->has('user')) {
+    private function checkIfLoggedIn()
+    {
+        if (!session()->has('user')) {
             abort(403, 'You are not logged in.');
         }
     }
 
-    private function checkIfTaskBelongsToUSer() {
+    private function checkIfTaskBelongsToUSer(Task $task)
+    {
         if ($task->user_id != session()->get('user')->id) {
             abort(403, 'You are not authorized to see this task.');
         }
@@ -39,7 +41,7 @@ class TaskController extends Controller
     {
         $this->checkIfLoggedIn();
 
-        $this->checkIfTaskBelongsToUSer();
+        $this->checkIfTaskBelongsToUSer($task);
 
         return view('task', [
             'titlePart' => '| Current task',
@@ -85,7 +87,7 @@ class TaskController extends Controller
         return redirect('/tasks');
     }
 
-    public function addTaskForm(Request $request)
+    public function addTaskForm()
     {
         $this->checkIfLoggedIn();
 
@@ -99,7 +101,7 @@ class TaskController extends Controller
     {
         $this->checkIfLoggedIn();
 
-        $this->checkIfTaskBelongsToUSer();
+        $this->checkIfTaskBelongsToUSer($task);
 
         return view('update-task', [
             'titlePart' => '| Update a task',
@@ -112,7 +114,7 @@ class TaskController extends Controller
     {
         $this->checkIfLoggedIn();
 
-        $this->checkIfTaskBelongsToUSer();
+        $this->checkIfTaskBelongsToUSer($task);
 
         $task->updateTask(
             $request->input('title'),
@@ -126,10 +128,7 @@ class TaskController extends Controller
     {
         $this->checkIfLoggedIn();
 
-        // if ($task->user_id != session()->get('user')->id) {
-        //     abort(403, 'You are not authorized to see this task.');
-        // }
-        $this->checkIfTaskBelongsToUSer();
+        $this->checkIfTaskBelongsToUSer($task);
 
         $task->done();
 
@@ -140,10 +139,7 @@ class TaskController extends Controller
     {
         $this->checkIfLoggedIn();
 
-        // if ($task->user_id != session()->get('user')->id) {
-        //     abort(403, 'You are not authorized to see this task.');
-        // }
-        $this->checkIfTaskBelongsToUSer();
+        $this->checkIfTaskBelongsToUSer($task);
 
         $task->delete();
 

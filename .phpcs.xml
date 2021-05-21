@@ -12,6 +12,7 @@
     <exclude-pattern>vendor</exclude-pattern>
     <exclude-pattern>storage/framework/views</exclude-pattern>
     <exclude-pattern>public/index.php</exclude-pattern>
+    <exclude-pattern>myreport.html</exclude-pattern>
     <exclude-pattern>config</exclude-pattern>
     <exclude-pattern>app/Console</exclude-pattern>
     <exclude-pattern>server.php</exclude-pattern>
