@@ -35,13 +35,6 @@ class UserControllerTest extends TestCase
 
         $this->assertDatabaseCount('users', 1);
 
-        // successful login
-        $this->followingRedirects() // redirect
-            ->post('/login', [
-                'email' => 'ron@hogwarts.com',
-                'password' => "test"])
-            ->assertStatus(200);
-
         // unsuccessful login due to user doesn't exist
         $this->followingRedirects() // redirect
             ->post('/login', [
@@ -50,13 +43,21 @@ class UserControllerTest extends TestCase
             ->assertStatus(200)
             ->assertSee("Welcome to this ToDo application!");
 
-        // unsuccessful login due to wrong password
+        //unsuccessful login due to wrong password
         $this->followingRedirects() // redirect
             ->post('/login', [
                 'email' => 'ron@hogwarts.com',
                 'password' => "Test"])
             ->assertStatus(200)
             ->assertSee("Welcome to this ToDo application!");
+
+
+        // successful login
+        $this->followingRedirects() // redirect
+            ->post('/login', [
+                'email' => 'ron@hogwarts.com',
+                'password' => "test"])
+            ->assertStatus(200);
     }
 
     public function testRegisterForm()

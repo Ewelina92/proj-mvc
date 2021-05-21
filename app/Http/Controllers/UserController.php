@@ -21,10 +21,10 @@ class UserController extends Controller
         $password = $request->input("password");
 
         $user = new User();
-        $user = $user->checkUser($email, $password);
+        $userResponse = $user->checkUser($email, $password);
 
-        if ($user) {
-            $request->session()->put('user', $user);
+        if ($userResponse) {
+            $request->session()->put('user', $userResponse);
             return redirect('/tasks');
         }
 
