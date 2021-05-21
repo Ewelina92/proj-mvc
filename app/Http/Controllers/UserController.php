@@ -21,10 +21,10 @@ class UserController extends Controller
         $password = $request->input("password");
 
         $user = new User();
-        $user = $user->checkUser($email, $password); // FIXA
-        $request->session()->put('user', $user);
+        $user = $user->checkUser($email, $password);
 
         if ($user) {
+            $request->session()->put('user', $user);
             return redirect('/tasks');
         }
 
