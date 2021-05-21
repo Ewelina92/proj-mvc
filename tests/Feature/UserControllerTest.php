@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
@@ -36,31 +37,27 @@ class UserControllerTest extends TestCase
         $this->assertDatabaseCount('users', 1);
 
         // successful login
-        $response = $this->post('/login', [
-            'email' => 'ron@hogwarts.com',
-            'password' => "test"]);
-
-        $response->assertStatus(302) // redirect
-                ->assertRedirect('/tasks');
-        $this->followRedirects($response)->assertSee("Add a new task");
+        $response = $this->followingRedirects() // redirect
+            ->post('/login', [
+                'email' => 'ron@hogwarts.com',
+                'password' => "test"])
+            ->assertStatus(200);
 
         // unsuccessful login due to user doesn't exist
-        $response_wrong_email = $this->post('/login', [
-            'email' => 'nope@hogwarts.com',
-            'password' => "test"]);
-
-        $response_wrong_email->assertStatus(302) // redirect
-                ->assertRedirect('/welcome');
-        $this->followRedirects($response_wrong_email)->assertSee("Welcome to this ToDo application!");
+        $response = $this->followingRedirects() // redirect
+            ->post('/login', [
+                'email' => 'nope@hogwarts.com',
+                'password' => "test"])
+            ->assertStatus(200)
+            ->assertSee("Welcome to this ToDo application!");
 
         // unsuccessful login due to wrong password
-        $response_wrong_password = $this->post('/login', [
-            'email' => 'ron@hogwarts.com',
-            'password' => "Test"]);
-
-        $response_wrong_password->assertStatus(302) // redirect
-                ->assertRedirect('/welcome');
-        $this->followRedirects($response_wrong_password)->assertSee("Welcome to this ToDo application!");
+        $response = $this->followingRedirects() // redirect
+            ->post('/login', [
+                'email' => 'ron@hogwarts.com',
+                'password' => "Test"])
+            ->assertStatus(200)
+            ->assertSee("Welcome to this ToDo application!");
     }
 
     public function testRegisterForm()
@@ -85,12 +82,12 @@ class UserControllerTest extends TestCase
         $this->assertDatabaseCount('users', 1);
 
         // unsuccessful registration, taken email
-        $response_taken_email = $this->post('/register', [
+        $responseTakenEmail = $this->post('/register', [
             'email' => 'ron@hogwarts.com',
             'password' => "test",
             'username' => "Hermione"]);
 
-        $response_taken_email->assertStatus(403) // redirect
+        $responseTakenEmail->assertStatus(403) // redirect
             ->assertSee("Email already taken");
         $this->assertDatabaseCount('users', 1);
     }
