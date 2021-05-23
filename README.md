@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/Ewelina92/proj-mvc.svg?branch=main)](https://travis-ci.org/Ewelina92/proj-mvc)
+## Build Status
+### Scrutinizer CI [![Build Status](https://scrutinizer-ci.com/g/Ewelina92/proj-mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/Ewelina92/proj-mvc/build-status/main) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ewelina92/proj-mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Ewelina92/proj-mvc/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/Ewelina92/proj-mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/Ewelina92/proj-mvc/?branch=main)
+### Travis CI [![Build Status](https://travis-ci.com/Ewelina92/proj-mvc.svg?branch=main)](https://travis-ci.com/Ewelina92/proj-mvc)
+
 
 ## About my project
 
@@ -14,7 +17,6 @@ In order to make this project work after downloading the repository make sure to
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Ewelina92/proj-mvc/main/readmeimage.png" alt="screenshot"></a>
-
 </p>
 
 ## Project created using Laravel

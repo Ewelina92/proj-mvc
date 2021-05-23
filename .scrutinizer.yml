@@ -5,6 +5,21 @@ filter:
     excluded_paths: [vendor/*, test/*]
 
 build:
+    environment:
+        php: '7.4'
+        mysql: '5.7'
+        hosts:
+            laravel.dev: '127.0.0.1'
+        variables:
+            APP_KEY: 'base64:75CJz7jUInt92NnDypfF67b7wxcSBRrK5W7qmSnVBaY='
+            APP_ENV: 'testing'
+            APP_URL: 'http://laravel.dev'
+            API_HOST: 'laravel.dev'
+            DB_HOST: '127.0.0.1'
+            DB_DATABASE: 'scrutinizer'
+            DB_USERNAME: 'root'
+            DB_PASSWORD: ''
+            MAIL_DRIVER: 'log'
     nodes:
         my-tests:
             environment:
