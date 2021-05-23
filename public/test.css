@@ -1,3 +1,4 @@
+@import './normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 html {
     font-size: 100%;
@@ -94,7 +95,7 @@ header nav a:hover {
 }
 
 header nav a:hover::after {
-    transform: scaleX(0.3)
+    transform: scaleX(0.6)
 }
 
 /*
@@ -143,6 +144,7 @@ header nav a:hover::after {
     display: grid;
     grid-template-rows: 1fr;
     place-items: center;
+    padding: 1rem;
 }
 
 .task-short div p {
@@ -269,4 +271,18 @@ fieldset a {
     border-radius: 18px;
     padding: 1em;
     max-width: 150px;
+}
+
+@media (max-width : 768px) {
+    main {
+        width: 95%;
+    }
+
+    .task-list {
+        grid-template-columns: unset;
+        grid-template-rows: auto;
+        grid-gap: 0;
+    }
+
+
 }

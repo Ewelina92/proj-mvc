@@ -16,6 +16,7 @@
     <exclude-pattern>config</exclude-pattern>
     <exclude-pattern>app/Console</exclude-pattern>
     <exclude-pattern>server.php</exclude-pattern>
+    <exclude-pattern>normalize.css</exclude-pattern>
     
 
     <arg name="encoding" value="utf-8"/>
