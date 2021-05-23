@@ -28,12 +28,23 @@ class Task extends Model
         'user_id',
     ];
 
+    /**
+     * Function to set a task as finished.
+     *
+     * @var array
+     */
     public function done()
     {
         $this->finished_at = now();
         $this->save();
     }
 
+    /**
+     * Function to update a task.
+     *
+     * @var string $title
+     * @var string $body
+     */
     public function updateTask($title, $body)
     {
         $this->title = $title;

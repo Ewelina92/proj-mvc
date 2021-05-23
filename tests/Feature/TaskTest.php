@@ -12,7 +12,7 @@ class TaskTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * A basic functional test example.
+     * Test creation of a new task.
      *
      * @return void
      */
@@ -28,6 +28,11 @@ class TaskTest extends TestCase
         $this->assertDatabaseCount('tasks', 1);
     }
 
+    /**
+     * Test marking a task as finished.
+     *
+     * @return void
+     */
     public function testDone()
     {
         $task = new Task();
@@ -48,6 +53,11 @@ class TaskTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * Test updating a task.
+     *
+     * @return void
+     */
     public function testUpdateTask()
     {
         $task = new Task();

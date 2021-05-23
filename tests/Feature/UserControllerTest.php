@@ -12,7 +12,7 @@ class UserControllerTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * A basic feature test example.
+     * Test access to /welcome when not logged in.
      *
      * @return void
      */
@@ -24,6 +24,11 @@ class UserControllerTest extends TestCase
             ->assertSee("Welcome to this ToDo application!");
     }
 
+    /**
+     * Test login function.
+     *
+     * @return void
+     */
     public function testLogin()
     {
         $user = new User();
@@ -60,6 +65,11 @@ class UserControllerTest extends TestCase
             ->assertStatus(200);
     }
 
+    /**
+     * Test access to /register when not logged in.
+     *
+     * @return void
+     */
     public function testRegisterForm()
     {
         $response = $this->get('/register');
@@ -68,6 +78,11 @@ class UserControllerTest extends TestCase
             ->assertSee("Create new account");
     }
 
+    /**
+     * Test register function.
+     *
+     * @return void
+     */
     public function testRegister()
     {
         // successful registration
@@ -91,6 +106,11 @@ class UserControllerTest extends TestCase
         $this->assertDatabaseCount('users', 1);
     }
 
+    /**
+     * Test logout function.
+     *
+     * @return void
+     */
     public function testLogout()
     {
         $this->followingRedirects() // redirect

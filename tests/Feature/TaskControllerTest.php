@@ -54,7 +54,8 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Tests access to site when not logged in
+     * and a user is required.
      *
      * @return void
      *
@@ -68,6 +69,12 @@ class TaskControllerTest extends TestCase
             ->assertSee("You are not logged in");
     }
 
+    /**
+     * Tests access to /tasks when logged in.
+     *
+     * @return void
+     *
+     */
     public function testShowTasks()
     {
         $response = $this->get('/tasks');
@@ -79,7 +86,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * Test.
+     * Tests access to /task/taskId.
      *
      * @return void
      *
@@ -107,7 +114,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Tests access to /finished-tasks.
      *
      * @return void
      *
@@ -132,7 +139,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Tests access to /add-task with GET method.
      *
      * @return void
      *
@@ -145,6 +152,12 @@ class TaskControllerTest extends TestCase
             ->assertSee("Add task");
     }
 
+    /**
+     * Tests access to /add-task with POST method.
+     *
+     * @return void
+     *
+     */
     public function testAddTask()
     {
         $this->followingRedirects() // redirect
@@ -157,7 +170,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * Test.
+     * Tests access to /task/taskId/update with GET method.
      *
      * @return void
      *
@@ -176,7 +189,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * Test.
+     * Tests access to /task/taskId/update with POST method.
      *
      * @return void
      *
@@ -197,7 +210,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * Test.
+     * Tests access to /task/taskId/done with GET method.
      *
      * @return void
      *
@@ -217,7 +230,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * Test.
+     * Tests access to /task/taskId/delete with GET method.
      *
      * @return void
      *

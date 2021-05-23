@@ -33,9 +33,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Function for checking if the user with a current email
+     * exists in the database, and if the password provided is
+     * correct.
      *
-     * @var array
+     * @var string email
+     * @var string pass (password)
+     *
      * @SuppressWarnings(PHPMD.StaticAccess)
      */
     public function checkUser($email, $pass)

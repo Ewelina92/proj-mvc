@@ -12,7 +12,7 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * A basic functional test example.
+     * Test creation of a new User.
      *
      * @return void
      */
@@ -28,6 +28,11 @@ class UserTest extends TestCase
         $this->assertDatabaseCount('users', 1);
     }
 
+    /**
+     * Test function responsible for confirming a user when logging in.
+     *
+     * @return void
+     */
     public function testCheckUser()
     {
         $user = new User();

@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+     /**
+     * Function to access the homepage /welcome.
+     *
+     * @var Request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         return view('welcome', [
@@ -15,6 +21,12 @@ class UserController extends Controller
         ]);
     }
 
+     /**
+     * Function to log in the user.
+     *
+     * @var Request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function login(Request $request)
     {
         $email = $request->input("email");
@@ -31,6 +43,11 @@ class UserController extends Controller
         return redirect('/welcome');
     }
 
+     /**
+     * Function access the register form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function registerForm()
     {
         return view('register', [
@@ -38,6 +55,12 @@ class UserController extends Controller
         ]);
     }
 
+     /**
+     * Function to register a new user.
+     *
+     * @var Request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function register(Request $request)
     {
         $email = $request->input("email");
@@ -63,6 +86,12 @@ class UserController extends Controller
         return redirect('/tasks');
     }
 
+     /**
+     * Function to log out a user.
+     *
+     * @var Request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout(Request $request)
     {
         $request->session()->forget('user');
