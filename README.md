@@ -11,7 +11,9 @@ Since this is a final project for school, right now there are two accounts avail
 
 ## Installation
 
-In order to make this project work after downloading the repository make sure to run composer install to have all necessary dependencies, and make sure you have an .env-file with a database connection. There is a local testing environment connected to the Makefile, look inside it for available command-line commands, but I recommend "make clean-all" for a total nuke of the environment, "make install" for setting it all up again (composer install is integrated in this command) and "make test" for running available tests from e.g. phpunit and phpstan.
+In order to make this project work after downloading the repository make sure to run composer install to have all necessary dependencies, and make sure you have an .env-file with a database connection. There is a local testing environment connected to the Makefile, look inside it for available command-line commands, but I recommend "make clean-all" for a total nuke of the environment, "make install" for setting it all up again (composer install is integrated in this command) and "make test" for running available tests from e.g. phpunit and phpstan. To make sure you have the correct tables in your database, run "php artisan migrate", or run "php artisan migrate --seed" for also filling the database with example data. Consult Laravels documentation for more helpful terminal commands.
+
+Navigate to the public folder using a webserver of your choice to see the application.
 
 ## Screenshot of the application
 
